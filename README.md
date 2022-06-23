@@ -30,17 +30,7 @@
 - [Template Syntax](https://angular.io/guide/template-syntax):
   - Angular's elements:
     - `<ng-template></ng-template>`
-  - Directives:
-    - Components:
-      - `<app-header></app-header>`
-    - Structural Directives
-      - Responsible for HTML layout
-      - Manipulate DOM based on some conditions
-      - `[ngIf]`, `[NgFor]`, `[NgSwitch]`
-    - Attribute directives
-      - `[NgClass]`
-    - Pipes or Template expression operators
-      - `{{ name | uppercase }}`
+  - [Directives](#directives)
   - Bindings:
     - Property binding:
       - `[dataName]`
@@ -69,3 +59,30 @@
   - Then goes down to the hell till last component
   - Then comes back
 - Kinda tree's root. From the main root start's and then goes to branches
+- Actually a [directive](#directives) with a template
+
+# Directives
+
+- Provides functionality
+- Modify DOM
+  - Behavior
+  - View/appearance
+- `@Decorator`
+- Types:
+  - [Components](#components):
+    - `<app-header></app-header>`
+  - Structural Directives
+    - Responsible for HTML layout
+    - Manipulate DOM based on some conditions
+    - `[ngIf]`, `[NgFor]`, `[NgSwitch]`
+  - Attribute directives
+    - `[NgClass]`
+  - [Pipes](#pipes)
+    - `{{ name | uppercase }}`
+
+# Pipes
+
+- Template expression operators
+- Change data before displaying it
+- Reusable
+- Do not modify data

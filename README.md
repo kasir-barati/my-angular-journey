@@ -31,10 +31,7 @@
     - `<ng-template></ng-template>`
   - [Directives](#directives)
   - [Bindings](#data-binding)
-- Routing
-  - `RouterModule`
-  - `Routes`
-  - `Route`
+- [Routing](#routing)
 - Http
   - `HttpClientModule`
   - RxJS based
@@ -136,3 +133,26 @@
 - A simple class annotated with `@Injectable` decorator
 - To inject service in another class you need to add it in `providers` list.
   - but Angular CLI - `ng generate service service-name` - does something a little more general, It will add that class inside the globally available services. In this way we do not need to list them in `providers`
+
+# Data persistence
+
+- Saving data for only when user is using my application
+  - Store it in memory
+  - Create a class/Object, store data inside it, do DI or just import it. This is what we do in most cases.
+  - Showing a list of orders, or list of products
+- Saving data for a longer time
+  - Things like refresh token.
+  - Create a class and implement local storage inside it
+
+# Routing
+
+- Do not refresh the whole page
+- Just change the components
+- You can in Angular know about what where user and send him back and forth between routes
+- `RouterModule`
+  - Routing configuration:
+    - `Routes`
+    - `Route`
+  - [Routing events](https://angular.io/api/router/Event)
+  - `routerLink` directive that do routing
+  - `<router-outlet></router-outlet>` directive that specifies where the component should be shown after route changed.

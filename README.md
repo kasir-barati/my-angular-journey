@@ -31,16 +31,7 @@
   - Angular's elements:
     - `<ng-template></ng-template>`
   - [Directives](#directives)
-  - Bindings:
-    - Property binding:
-      - `[dataName]`
-    - Event binding:
-      - `(eventName)`
-    - Two way binding:
-      - `[(ngModel)]`
-      - Activated in `FormsModule`
-  - Interpolation:
-    - String interpolation: `<h3>Current customer: {{ currentCustomer }}</h3>`
+  - [Bindings](#data-binding):
 - Routing
   - `RouterModule`
   - `Routes`
@@ -86,3 +77,48 @@
 - Change data before displaying it
 - Reusable
 - Do not modify data
+
+# Data binding
+
+- Easily bind data to views
+- Easily work with data in the views
+- Types:
+  - [Template variables](https://angular.io/guide/template-reference-variables):
+    - Use data from one part of a template in another part of the template.
+      ```html
+      <input type="text" #name />
+      <button type="button" (click)="onClick(name.value)">
+        click me
+      </button>
+      ```
+    - Can refer to:
+      - A DOM element within that template
+      - A directive or component
+      - **:warning:TBH IDK Anything about this one:warning:** A web component
+      - **:warning:TBH IDK Anything about this one:warning:** A directive or component
+  - [Template statements](https://angular.io/guide/template-statements):
+    - Use a language that **looks like JavaScript**
+    - You can do in it:
+      - Basic assignment
+      - Chaining expressions with `;`
+    - You cannot do:
+      - `new`
+      - `++` or `--`
+      - `+=` or `-=`
+      - bitwise operators: `|` or `&`
+      - [pipe operator](#pipes)
+    - Statement best practices:
+      - Conciseness: Method call or basic property assignments. Keep template statements minimal.
+      - Work within the context: Template statements cannot refer to anything in the global namespace such as `window` or `document`. #NSFW Not in the view, For sure you have them in the component's class.
+    - Methods or properties that you can use in your HTML to respond to user events
+    - Property binding:
+      - `[dataName]`
+    - Event binding:
+      - Use template statements with elements, components, or directives in response to events.
+      - `(eventName)=statement`
+  - Two way binding:
+    - `[(ngModel)]`
+    - Activated in `FormsModule`
+  - [Template expression](https://angular.io/guide/interpolation) or Interpolation:
+    - Uses the double curly braces `{{` and `}}` as delimiters.
+    - String interpolation: `<h3>Current customer: {{ currentCustomer }}</h3>`

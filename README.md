@@ -1,14 +1,18 @@
-# My Journey in Angular
+# Why Angular?
 
-- For a better & deeper comprehension do this
-- Check PRs
-- Check commits
-- Read README.mds. Almost everywhere there is one
-- Read comments carefully
-
-# Flourish this repository by
-
-- Participate in this repo by creating PR.
-- Create issue
-- Create discussion
-- DM me
+- A standard framework to build dynamic site:
+  - Interactivity
+  - Data modification
+  - Modification
+- It is specialized in data binding
+- Leverage the client side by using RxJS natively
+- Typescript gave it type - Although it is not strongly typed but eventually it is much much better that React/Vue where we have to configure it ourselves
+- Component architecture
+  - Web component:
+    - It is custom tags: `<my-custom-tag></my-custom-tag>`
+  - Modularity
+  - Reusability
+  - IMO each component is a module in fact
+- DI
+  - Service
+    - Separate view from business logics

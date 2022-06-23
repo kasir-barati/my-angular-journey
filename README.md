@@ -13,9 +13,8 @@
   - Modularity
   - Reusability
   - IMO each component is a module in fact
-- DI
-  - Service
-    - Separate view from business logics
+- [DI](#di)
+  - [Service](#service)
 
 # What I use in Angular:
 
@@ -31,7 +30,7 @@
   - Angular's elements:
     - `<ng-template></ng-template>`
   - [Directives](#directives)
-  - [Bindings](#data-binding):
+  - [Bindings](#data-binding)
 - Routing
   - `RouterModule`
   - `Routes`
@@ -40,8 +39,7 @@
   - `HttpClientModule`
   - RxJS based
   - built-in
-- Services:
-  - Business logic place
+- [Services](#service)
 
 # Components
 
@@ -122,3 +120,19 @@
   - [Template expression](https://angular.io/guide/interpolation) or Interpolation:
     - Uses the double curly braces `{{` and `}}` as delimiters.
     - String interpolation: `<h3>Current customer: {{ currentCustomer }}</h3>`
+
+# DI
+
+- Dependency Injection
+  - IoC - Inversion of Control
+  - Instead of module goes out and get an instance from them, we provide them what they need.
+- `constructor(className: ClassName) {}` and Angular DI create an instance for you.
+
+# Service
+
+- Contains business logic
+- No business logic in component
+  - Separate view from business logics
+- A simple class annotated with `@Injectable` decorator
+- To inject service in another class you need to add it in `providers` list.
+  - but Angular CLI - `ng generate service service-name` - does something a little more general, It will add that class inside the globally available services. In this way we do not need to list them in `providers`

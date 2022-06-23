@@ -47,6 +47,16 @@
   - Then comes back
 - Kinda tree's root. From the main root start's and then goes to branches
 - Actually a [directive](#directives) with a template
+- `@Component` decorator annotate a class as a component
+  - Its arguments:
+    - `selector`: string
+      - used string to locate a custom HTML tag and put this component's content inside it.
+      - Usually named `app-*`
+      - This argument is required
+    - `template`: string
+      - IDK when or why we need HTML inside the component directly. Anyway, Required if `templateUrl` is not provided
+    - `templateUrl`: string
+      - The relative path to a html - template - file. Is required if `template` is not provided
 
 # Directives
 

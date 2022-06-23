@@ -53,11 +53,15 @@
     - `selector`: string
       - used string to locate a custom HTML tag and put this component's content inside it.
       - Usually named `app-*`
+      - According to the w3c specs that custom DOM elements should contains at least one dash
       - This argument is required
     - `template`: string
+      - Inline template
       - IDK when or why we need HTML inside the component directly. Anyway, Required if `templateUrl` is not provided
     - `templateUrl`: string
       - The relative path to a html - template - file. Is required if `template` is not provided
+      - Relative path handled by Angular CLI
+      - External template
 
 # Directives
 

@@ -9,6 +9,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  // We have a <app-root></app-root> in the index.html
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

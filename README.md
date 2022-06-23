@@ -16,3 +16,11 @@
 - DI
   - Service
     - Separate view from business logics
+
+# What I use in Angular:
+
+- HTML
+- Bootstrap over Tailwind. [Read more and understand why in here](https://dev.to/wasabigeek/which-css-framework-bootstrap-or-tailwind-2k0g)
+- Typescript not JavaScript inside a `.ts` file extension
+- Angular Material UI
+- <small>Add your dashboard here, Possible choice: [Prime](https://www.primefaces.org/primeng/)</small>

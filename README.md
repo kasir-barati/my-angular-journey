@@ -16,6 +16,7 @@
 - [DI](#di)
   - [Service](#service)
 - Angular leverages decorators to configure our Angular app. IMO this is really smooth.
+- [Angular CLI](./ng-cli.md).
 
 # What I use in Angular:
 

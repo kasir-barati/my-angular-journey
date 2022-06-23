@@ -61,3 +61,11 @@
   - built-in
 - Services:
   - Business logic place
+
+# Components
+
+- Load components process:
+  - Starts from the app
+  - Then goes down to the hell till last component
+  - Then comes back
+- Kinda tree's root. From the main root start's and then goes to branches

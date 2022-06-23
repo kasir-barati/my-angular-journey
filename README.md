@@ -15,6 +15,7 @@
   - IMO each component is a module in fact
 - [DI](#di)
   - [Service](#service)
+- Angular leverages decorators to configure our Angular app. IMO this is really smooth.
 
 # What I use in Angular:
 
@@ -156,3 +157,12 @@
   - [Routing events](https://angular.io/api/router/Event)
   - `routerLink` directive that do routing
   - `<router-outlet></router-outlet>` directive that specifies where the component should be shown after route changed.
+
+# Angular Modules
+
+- Organized app by packeting related features/functionalities in a module
+- `NgModule` annotate a class which is destinated to be module
+  - Its arguments:
+    - `imports`: Bring in other modules inside this module because this module needs something inside the other module.
+    - `decorations`: Make other pipes/components/directives available inside the module which does not come with a module. For example usually our Angular app components, shared pipes/directives.
+    - `bootstrap`: This conf is usually useful for `AppModule` which specify the root component which contains other components.

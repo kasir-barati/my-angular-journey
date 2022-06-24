@@ -11,6 +11,10 @@ import { Component } from '@angular/core';
 @Component({
   // We have a <app-root></app-root> in the index.html
   selector: 'app-root',
+  /**
+   * Use inline markup with template
+   * Or use external template with relative path. Build process handles this relative path
+   */
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

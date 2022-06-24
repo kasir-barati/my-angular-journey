@@ -1,0 +1,74 @@
+<!-- 
+  Interpolation in unison uppercase built-in Angular pipe
+ -->
+<!-- 
+  Correct usage:
+  Based on what I absorbed when we use [] around a property tells Angular
+  that you wanted to evaluate its value as an expression.
+  - [textContent]="name"
+  Angular can translate the interpolation to property too. In this example 
+  we told Angular explicitly to evaluate the value as a expression.
+  - textContent="{{ name }}"
+  Wrong usage:
+  Angular no more see the "name" as an expression
+  - textContent="name"
+ -->
+<h2>
+  <!-- 
+    Here we do pipe chaining
+   -->
+  {{ media.name | uppercase | slice: 0:10 }}
+  <!-- 
+    Wrong usage: 
+    Each pipe do return a specific type and we cannot pipe in any order that we like
+    For example here I thought it would be good if I first do split the string and
+    then uppercase
+    TS2769: No overload matches this call.
+    Overload 1 of 3, '(value: string): string', gave the following error.
+      Argument of type 'unknown[]' is not assignable to parameter of type 'string'.
+    Overload 2 of 3, '(value: null | undefined): null', gave the following error.
+      Argument of type 'unknown[]' is not assignable to parameter of type 'null | undefined'.
+    Overload 3 of 3, '(value: string | null | undefined): string | null', gave the following error.
+      Argument of type 'unknown[]' is not assignable to parameter of type 'string'.
+      - {{ media.name | slice: 0:10 | uppercase }}
+   -->
+</h2>
+<!-- 
+  Use structural directive to prevent showing this div if watchedOn is empty
+  *ngIf is a syntax sugar. In other word it is a short hand of [ngIf]. Instead of
+    <ng-template [ngIf]="media.watchedOn"></ng-template>
+  Note that <ng-template></ng-template> won't be added to the DOM at any scenario
+  *ngIf will do that <ng-template> part for us behind the sense. But in if else 
+  we need to use <ng-template> angular element
+ -->
+<div *ngIf="media.watchedOn">
+  Watched on {{ media.watchedOn | date: 'shortDate' }}
+</div>
+<div>{{ media.category }}</div>
+<div>{{ media.year }}</div>
+<div class="tools">
+  <!-- 
+    Here I could not find a solution for custom directives to be detected via IDE.
+    TODO: Find an extension that do just that
+   -->
+  <svg
+    [majFavorite]="media.isFavorite"
+    class="favorite"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M12 9.229c.234-1.12 1.547-6.229 5.382-6.229 2.22 0 4.618 1.551 4.618 5.003 0 3.907-3.627 8.47-10 12.629-6.373-4.159-10-8.722-10-12.629 0-3.484 2.369-5.005 4.577-5.005 3.923 0 5.145 5.126 5.423 6.231zm-12-1.226c0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-7.962-9.648-9.028-12-3.737-2.338-5.262-12-4.27-12 3.737z"
+    />
+  </svg>
+  <!-- 
+    Native DOM events or custom events you have created.
+      - Native DOM events in Angular discarded the "on" part as you see here
+      - This is #my_convention:
+        - Prefix the method name with event name - In this example: Click - and 
+          to make it readable I prepend the "on" word too. At last we need a noun
+          to state our function name more vividly
+   -->
+  <a class="delete" (click)="onClickDeleteMedia(media.id)">remove</a>
+  <a class="details">watch</a>
+</div>

@@ -1,0 +1,35 @@
+<header>
+  <div>
+    {{ medias | categoryList }}
+  </div>
+</header>
+<section>
+  <!-- 
+    - Property binding syntax to pass data to the child component
+    - We call media "binding target" and we call mediaItem "binding source"
+    - Angular first starts looking for built-in properties for the tag
+      which in this case there is not any built-in property since it is a
+      custom element. So at last Angular search for properties annotate with
+      @Input.
+    - Here we grab the passed data through the triggered event via the $event variable.
+      But we also could do this: (deleteMedia)="onDeleteMedia(media.id)" because we had
+      access to it. But I do not suggest it.
+      Why? it is simple. It is better to get media through triggered event likewise we
+      have do it every day on default events.
+
+    - Note that we have to use micro syntax statement, and just follow this syntax. BTW
+      I'd like to see it as a venerable JavaScript for...of
+
+    - Attribute directives: In this example if the condition was truthy the key will be added to
+      the auto generated class attribute.
+   -->
+  <app-media
+    *ngFor="let media of medias"
+    [media]="media"
+    (deleteMedia)="onDeleteMedia($event)"
+    [ngClass]="{
+      'medium-movies': media.category === 'Movies',
+      'medium-series': media.category === 'Series'
+    }"
+  ></app-media>
+</section>

@@ -11,7 +11,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./media.component.css'],
 })
 export class MediaComponent implements OnInit {
-  constructor() {}
+  name: string;
+
+  constructor() {
+    this.name = 'The Redemption';
+  }
 
   ngOnInit(): void {}
+  watchedOn(): string {
+    return '12/22/1994';
+  }
 }

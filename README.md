@@ -28,11 +28,7 @@
 
 # Angular nuts and bolts in a blink of an eye
 
-- [Template Syntax](https://angular.io/guide/template-syntax):
-  - Angular's elements:
-    - `<ng-template></ng-template>`
-  - [Directives](#directives)
-  - [Bindings](#data-binding)
+- [Template Syntax](#angular-template-syntax)
 - [Routing](#routing)
 - Http
   - `HttpClientModule`
@@ -90,11 +86,19 @@
 - Reusable
 - Do not modify data
 
-# Data binding
+# [Angular Template Syntax](https://angular.io/guide/template-syntax)
 
 - Easily bind data to views
 - Easily work with data in the views
+- :warning:I am not sure:warning: You cannot do:
+  - `new`
+  - `++` or `--`
+  - `+=` or `-=`
+  - bitwise operators: `|` or `&`
 - Types:
+  - :warning:IDK is this one correct or not:warning: Angular's elements:
+    - `<ng-template></ng-template>`
+  - :warning:[Directives](#directives):warning:
   - [Template variables](https://angular.io/guide/template-reference-variables):
     - Use data from one part of a template in another part of the template.
       ```html
@@ -114,24 +118,23 @@
       - Basic assignment
       - Chaining expressions with `;`
     - You cannot do:
-      - `new`
-      - `++` or `--`
-      - `+=` or `-=`
-      - bitwise operators: `|` or `&`
       - [pipe operator](#pipes)
     - Statement best practices:
       - Conciseness: Method call or basic property assignments. Keep template statements minimal.
       - Work within the context: Template statements cannot refer to anything in the global namespace such as `window` or `document`. #NSFW Not in the view, For sure you have them in the component's class.
     - Methods or properties that you can use in your HTML to respond to user events
-    - Property binding:
-      - `[dataName]`
-    - Event binding:
-      - Use template statements with elements, components, or directives in response to events.
-      - `(eventName)=statement`
-  - Two way binding:
-    - `[(ngModel)]`
-    - Activated in `FormsModule`
-  - [Template expression](https://angular.io/guide/interpolation) or Interpolation:
+    - Bindings
+      - Property binding:
+        - `[dataName]`
+      - Event binding:
+        - Use template statements with elements, components, or directives in response to events.
+        - `(eventName)=statement`
+        - Two way binding:
+          - `[(ngModel)]`
+          - Activated in `FormsModule`
+  - [Template expression](https://angular.io/guide/interpolation)
+    - Called Interpolation
+    - A way to show data in views
     - Uses the double curly braces `{{` and `}}` as delimiters.
     - String interpolation: `<h3>Current customer: {{ currentCustomer }}</h3>`
 

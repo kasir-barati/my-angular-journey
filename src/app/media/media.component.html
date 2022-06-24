@@ -13,13 +13,13 @@
   Angular no more see the "name" as an expression
   - textContent="name"
  -->
-<h2 [textContent]="name"></h2>
+<h2>{{ media.name | uppercase }}</h2>
 <!-- 
   Interpolation in unison function call
  -->
-<div>Watched on {{ watchedOn() }}</div>
-<div>Action</div>
-<div>1994</div>
+<div>Watched on {{ media.watchedOn }}</div>
+<div>{{ media.category }}</div>
+<div>{{ media.year }}</div>
 <div class="tools">
   <svg
     class="favorite"

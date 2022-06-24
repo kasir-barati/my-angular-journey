@@ -126,6 +126,10 @@
     - Bindings
       - Property binding:
         - Bind data to view
+        - Sending data to a component
+          1. Define a property in component class
+          2. Annotate added property with `@Input` decorator.
+             - Basically it adds some metadata to the property to tell Angular that whoever who instantiate this component **can** pass a value to the annotated property.
         - Use `[]` for property binding
         - HTML elements have backing DOM properties that track state on those elements
         - `[domProperty]="componentProperty"` Wire to those defined properties inside class

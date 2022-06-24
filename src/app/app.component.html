@@ -5,5 +5,13 @@
       Keeping track of media I wanted to watch
     </p>
   </header>
-  <app-media></app-media>
+  <!-- 
+    - Property binding syntax to pass data to the child component
+    - We call media "binding target" and we call mediaItem "binding source"
+    - Angular first starts looking for built-in properties for the tag
+      which in this case there is not any built-in property since it is a
+      custom element. So at last Angular search for properties annotate with
+      @Input.
+   -->
+  <app-media [media]="mediaItem"></app-media>
 </section>

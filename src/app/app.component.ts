@@ -27,5 +27,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'my-angular-journey';
+  /**
+   * We will send this property to the media component
+   */
+  mediaItem = {
+    id: 1,
+    name: 'My Angular Journey',
+    medium: 'Series',
+    category: 'Anime',
+    year: '2022',
+    watchedOn: '1994',
+    isFavorite: true,
+  };
 }

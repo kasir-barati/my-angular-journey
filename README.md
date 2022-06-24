@@ -78,6 +78,7 @@
     - The coolest thing is that Angular watches data and if it changes it will rerun the structural directives. In other word if the property's value changes it will rerun the `*ngFor` for example.
   - Attribute directives
     - `[NgClass]`
+    - Change the behavior/appearance of a DOM element that they attached to.
   - [Pipes](#pipes)
     - `{{ name | uppercase }}`
 

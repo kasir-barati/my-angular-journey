@@ -14,10 +14,17 @@
 
     - Note that we have to use micro syntax statement, and just follow this syntax. BTW
       I'd like to see it as a venerable JavaScript for...of
+
+    - Attribute directives: In this example if the condition was truthy the key will be added to
+      the auto generated class attribute.
    -->
   <app-media
     *ngFor="let media of medias"
     [media]="media"
     (deleteMedia)="onDeleteMedia($event)"
+    [ngClass]="{
+      'medium-movies': media.category === 'Movies',
+      'medium-series': media.category === 'Series'
+    }"
   ></app-media>
 </section>

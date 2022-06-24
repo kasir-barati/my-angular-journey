@@ -41,7 +41,7 @@ export class MediasComponent implements OnInit {
       category: 'Anime',
       year: '2022',
       watchedOn: '1994',
-      isFavorite: true,
+      isFavorite: false,
     },
   ];
 

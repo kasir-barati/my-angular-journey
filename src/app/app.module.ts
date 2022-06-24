@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MediaComponent } from './media/media.component';
 import { MediasComponent } from './medias/medias.component';
+import { FavoriteDirective } from './media/directive/favorite.directive';
 
 /**
  * imports: Usually things that our app needs to perform as it intended
@@ -21,7 +22,12 @@ import { MediasComponent } from './medias/medias.component';
  * bootstrap: Usually AppComponent
  */
 @NgModule({
-  declarations: [AppComponent, MediaComponent, MediasComponent],
+  declarations: [
+    AppComponent,
+    MediaComponent,
+    MediasComponent,
+    FavoriteDirective,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   /**

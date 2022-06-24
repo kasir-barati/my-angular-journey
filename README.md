@@ -79,6 +79,22 @@
   - Attribute directives
     - `[NgClass]`
     - Change the behavior/appearance of a DOM element that they attached to.
+    - We can have our own custom attribute directive
+      - A class annotated with `@Decorator`
+      - You can read more about why do we need those `[]` in [this Stackoverflow Q&A](https://stackoverflow.com/questions/43633452)
+      - Generating a new directive will auto import it in the `app.module.ts`
+      - It is wise to use a domain name as prefix for our directives to keep them unique.
+      - To generate it via CLI I use `ng generate directive media/directive/favorite --prefix maj`
+        - Use `--prefix` flag to prefix the generated attribute with a prefix. Is is rewarded to prefix our custom attribute directives with a specific prefix.
+          - Here I used my repository's acronym `maj` which stands for `my angular journey`
+          - We can see the same pattern in the Angular directives too - `ngFor`, etc.
+          - When we do not specify `--selector` Angular will takes the file name and prepend it with the passed value to this flag and use it for selector.
+          - This command will also surround our directives name with a `[]`.
+        - use `--selector` to specify the selector explicitly.
+          - :exclamation:We cannot use `--selector` and `--prefix` in unison. Because `--selector` has the upper hand and would be applied on top of `--prefix`
+          - e.x. `ng generate directive media/directive/favorite --selector majBeloved`
+            - This may deceive you that it will not surround your directive with `[]`. But do not. It will surround it anyway.
+            - But here we can select a different name rather than the file name
   - [Pipes](#pipes)
     - `{{ name | uppercase }}`
 

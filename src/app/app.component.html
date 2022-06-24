@@ -5,17 +5,5 @@
       Keeping track of media I wanted to watch
     </p>
   </header>
-  <!-- 
-    - Property binding syntax to pass data to the child component
-    - We call media "binding target" and we call mediaItem "binding source"
-    - Angular first starts looking for built-in properties for the tag
-      which in this case there is not any built-in property since it is a
-      custom element. So at last Angular search for properties annotate with
-      @Input.
-    - Here we grab the passed data through the triggered event via the $event variable
-   -->
-  <app-media
-    [media]="mediaItem"
-    (deleteMedia)="onDeleteMedia($event)"
-  ></app-media>
+  <app-medias></app-medias>
 </section>

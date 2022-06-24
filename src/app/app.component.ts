@@ -26,25 +26,4 @@ import { Component } from '@angular/core';
    */
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  /**
-   * We will send this property to the media component
-   */
-  mediaItem = {
-    id: 1,
-    name: 'My Angular Journey',
-    medium: 'Series',
-    category: 'Anime',
-    year: '2022',
-    watchedOn: '1994',
-    isFavorite: true,
-  };
-
-  /**
-   * #my_convention
-   * Learn more in media.component.html in anchor tag
-   */
-  onDeleteMedia(id: number) {
-    console.log(id);
-  }
-}
+export class AppComponent {}

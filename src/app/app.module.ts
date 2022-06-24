@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MediaComponent } from './media/media.component';
+import { MediasComponent } from './medias/medias.component';
 
 /**
  * imports: Usually things that our app needs to perform as it intended
@@ -20,7 +21,7 @@ import { MediaComponent } from './media/media.component';
  * bootstrap: Usually AppComponent
  */
 @NgModule({
-  declarations: [AppComponent, MediaComponent],
+  declarations: [AppComponent, MediaComponent, MediasComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   /**

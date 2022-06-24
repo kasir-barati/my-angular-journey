@@ -74,6 +74,8 @@
     - Responsible for HTML layout
     - Manipulate DOM based on some conditions
     - `[ngIf]`, `[NgFor]`, `[NgSwitch]`
+    - They accept micro syntax statement. In other word Angular id picky about it and we have to do it in one way. It is especially true about `*ngFor`
+    - The coolest thing is that Angular watches data and if it changes it will rerun the structural directives. In other word if the property's value changes it will rerun the `*ngFor` for example.
   - Attribute directives
     - `[NgClass]`
   - [Pipes](#pipes)

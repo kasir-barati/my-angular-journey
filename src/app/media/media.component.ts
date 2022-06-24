@@ -21,4 +21,8 @@ export class MediaComponent implements OnInit {
   watchedOn(): string {
     return '12/22/1994';
   }
+
+  onClickDelete() {
+    console.log('Media delete called');
+  }
 }

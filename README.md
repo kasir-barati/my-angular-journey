@@ -126,14 +126,17 @@
     - Bindings
       - Property binding:
         - Bind data to view
+        - Use `[]` for property binding
         - HTML elements have backing DOM properties that track state on those elements
         - `[domProperty]="componentProperty"` Wire to those defined properties inside class
       - Event binding:
+        - Wire up event handlers from your components class to view
         - Use template statements with elements, components, or directives in response to events.
+        - Use `()` for event binding
         - `(eventName)=statement`
-        - Two way binding:
-          - `[(ngModel)]`
-          - Activated in `FormsModule`
+      - Two way binding:
+        - `[(ngModel)]`
+        - Activated in `FormsModule`
   - [Template expression](https://angular.io/guide/interpolation)
     - Called Interpolation
     - A way to show data in views

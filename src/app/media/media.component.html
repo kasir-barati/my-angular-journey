@@ -1,7 +1,19 @@
 <!-- 
   Interpolation in unison uppercase built-in Angular pipe
  -->
-<h2>{{ name | uppercase }}</h2>
+<!-- 
+  Correct usage:
+  Based on what I absorbed when we use [] around a property tells Angular
+  that you wanted to evaluate its value as an expression.
+  - [textContent]="name"
+  Angular can translate the interpolation to property too. In this example 
+  we told Angular explicitly to evaluate the value as a expression.
+  - textContent="{{ name }}"
+  Wrong usage:
+  Angular no more see the "name" as an expression
+  - textContent="name"
+ -->
+<h2 [textContent]="name"></h2>
 <!-- 
   Interpolation in unison function call
  -->

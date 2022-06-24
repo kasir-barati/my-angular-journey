@@ -125,7 +125,9 @@
     - Methods or properties that you can use in your HTML to respond to user events
     - Bindings
       - Property binding:
-        - `[dataName]`
+        - Bind data to view
+        - HTML elements have backing DOM properties that track state on those elements
+        - `[domProperty]="componentProperty"` Wire to those defined properties inside class
       - Event binding:
         - Use template statements with elements, components, or directives in response to events.
         - `(eventName)=statement`

@@ -102,8 +102,14 @@
 
 - Template expression operators
 - Change data before displaying it
+  - A statement followed by pipe operator. At last we have a transformed value which will be showed to the user
 - Reusable
 - Do not modify data
+- AFAIK It is exactly like Linux terminal pipes
+- We can also pass parameter/s to a pipe:
+  - `{{ media.watchedOn | date: 'shortDate', '+0900' }}`
+- Built-in pipes:
+  - [date](https://angular.io/api/common/DatePipe)
 
 # [Angular Template Syntax](https://angular.io/guide/template-syntax)
 

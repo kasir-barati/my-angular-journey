@@ -13,7 +13,26 @@
   Angular no more see the "name" as an expression
   - textContent="name"
  -->
-<h2>{{ media.name | uppercase }}</h2>
+<h2>
+  <!-- 
+    Here we do pipe chaining
+   -->
+  {{ media.name | uppercase | slice: 0:10 }}
+  <!-- 
+    Wrong usage: 
+    Each pipe do return a specific type and we cannot pipe in any order that we like
+    For example here I thought it would be good if I first do split the string and
+    then uppercase
+    TS2769: No overload matches this call.
+    Overload 1 of 3, '(value: string): string', gave the following error.
+      Argument of type 'unknown[]' is not assignable to parameter of type 'string'.
+    Overload 2 of 3, '(value: null | undefined): null', gave the following error.
+      Argument of type 'unknown[]' is not assignable to parameter of type 'null | undefined'.
+    Overload 3 of 3, '(value: string | null | undefined): string | null', gave the following error.
+      Argument of type 'unknown[]' is not assignable to parameter of type 'string'.
+      - {{ media.name | slice: 0:10 | uppercase }}
+   -->
+</h2>
 <!-- 
   Use structural directive to prevent showing this div if watchedOn is empty
   *ngIf is a syntax sugar. In other word it is a short hand of [ngIf]. Instead of
@@ -22,7 +41,9 @@
   *ngIf will do that <ng-template> part for us behind the sense. But in if else 
   we need to use <ng-template> angular element
  -->
-<div *ngIf="media.watchedOn">Watched on {{ media.watchedOn }}</div>
+<div *ngIf="media.watchedOn">
+  Watched on {{ media.watchedOn | date: 'shortDate' }}
+</div>
 <div>{{ media.category }}</div>
 <div>{{ media.year }}</div>
 <div class="tools">

@@ -249,7 +249,11 @@
 - Showing errors to the user
 - Two way to create forms:
   - **Template-driven**:
-    - Template is the major part engaged in form logic, things like:
+    - Template is the major part engaged in form logic.
+    - Add `FormsModule` in `AppModule`'s `imports` list.
+    - In this case we do not need to tell Angular where are our forms:
+      - It detects forms by means of `ngForm` directive - `#addMediaForm="ngForm"`.
+      - It detects forms' fields through `ngModel` directive
   - **Model-driven**:
     - Majority of form logic is crafted in model.
     - [My task tracker Angular app also contains good information](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/app/add-task/README.md).

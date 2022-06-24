@@ -26,8 +26,12 @@
 <div>{{ media.category }}</div>
 <div>{{ media.year }}</div>
 <div class="tools">
+  <!-- 
+    Here I could not find a solution for custom directives to be detected via IDE.
+    TODO: Find an extension that do just that
+   -->
   <svg
-    majFavorite
+    [majFavorite]="media.isFavorite"
     class="favorite"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"

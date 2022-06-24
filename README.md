@@ -35,6 +35,7 @@
   - RxJS based
   - built-in
 - [Services](#service)
+- [Forms](#angular-forms)
 
 # Components
 
@@ -236,3 +237,21 @@
     - `imports`: Bring in other modules inside this module because this module needs something inside the other module.
     - `decorations`: Make other pipes/components/directives available inside the module which does not come with a module. For example usually our Angular app components, shared pipes/directives.
     - `bootstrap`: This conf is usually useful for `AppModule` which specify the root component which contains other components.
+
+# Angular Forms
+
+- Collect data
+  - Mainly by `<form></form>` element
+- Custom validators
+- Built-in data validators
+  - Async and sync validators
+  - Track changes and revalidate forms data
+- Showing errors to the user
+- Two way to create forms:
+  - **Template-driven**:
+    - Template is the major part engaged in form logic, things like:
+  - **Model-driven**:
+    - Majority of form logic is crafted in model.
+    - [My task tracker Angular app also contains good information](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/app/add-task/README.md).
+- You can see a clear difference between template-driven and model-driven in [this PR](https://github.com/kasir-barati/task-tracker-traversy-media/pull/4/files) very clear and I tried to state it vividly and readily.s
+- You can see a good implementation on how to work with `HttpClient` in Angular in [this PR](https://github.com/kasir-barati/my-tour-of-heroes-angular/pull/6/files). Please read the whole codebase, that's how you get a more natural feeling about RxJS.

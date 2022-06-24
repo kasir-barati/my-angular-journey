@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { MediaComponent } from './media/media.component';
 import { MediasComponent } from './medias/medias.component';
 import { FavoriteDirective } from './media/directive/favorite.directive';
+import { CategoryListPipe } from './medias/pipes/category-list.pipe';
 
 /**
  * imports: Usually things that our app needs to perform as it intended
@@ -27,6 +28,7 @@ import { FavoriteDirective } from './media/directive/favorite.directive';
     MediaComponent,
     MediasComponent,
     FavoriteDirective,
+    CategoryListPipe,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

@@ -110,6 +110,19 @@
   - `{{ media.watchedOn | date: 'shortDate', '+0900' }}`
 - Built-in pipes:
   - [date](https://angular.io/api/common/DatePipe)
+- Custom pipe:
+  - It is fairly trivial
+  - Create `ng generate pipe /medias/pipes/category-list`
+    - The file name will be specified as the pipe name
+    - Angular CLI import the newly generated pipe in `app.module.ts`
+  - A class annotated with `@Pipe` decorator.
+  - We do have 2 sort of pipeline,
+    - Stateless:
+      - It is a pure function without any side effect. It only takes a value and returns another thing.
+      - We mark them with passing `pure: true` as a option in `@Pipe` decorator.
+      - by default pipelines are stateless
+    - Stateful:
+      - IDK but my gut tells me we should avoid this kind of works as much as we can. Based on my experience it really makes debugging hard sometimes.
 
 # [Angular Template Syntax](https://angular.io/guide/template-syntax)
 

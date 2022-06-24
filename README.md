@@ -48,6 +48,7 @@
   - Then comes back
 - Kinda tree's root. From the main root start's and then goes to branches
 - Actually a [directive](#directives) with a template
+- **They cannot be self closing**. It is a rigid law. You should do `<app-name></app-name>`
 - `@Component` decorator annotate a class as a component
   - Its arguments:
     - `selector`: string

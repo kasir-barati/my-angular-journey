@@ -15,9 +15,14 @@
  -->
 <h2>{{ media.name | uppercase }}</h2>
 <!-- 
-  Interpolation in unison function call
+  Use structural directive to prevent showing this div if watchedOn is empty
+  *ngIf is a syntax sugar. In other word it is a short hand of [ngIf]. Instead of
+    <ng-template [ngIf]="media.watchedOn"></ng-template>
+  Note that <ng-template></ng-template> won't be added to the DOM at any scenario
+  *ngIf will do that <ng-template> part for us behind the sense. But in if else 
+  we need to use <ng-template> angular element
  -->
-<div>Watched on {{ media.watchedOn }}</div>
+<div *ngIf="media.watchedOn">Watched on {{ media.watchedOn }}</div>
 <div>{{ media.category }}</div>
 <div>{{ media.year }}</div>
 <div class="tools">

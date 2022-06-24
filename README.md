@@ -135,6 +135,10 @@
         - `[domProperty]="componentProperty"` Wire to those defined properties inside class
       - Event binding:
         - Wire up event handlers from your components class to view
+        - Expose event/data from a component:
+          1. Define a property in component class
+          2. Annotate it with `@Output` decorator
+             - Bas
         - Use template statements with elements, components, or directives in response to events.
         - Use `()` for event binding
         - `(eventName)=statement`

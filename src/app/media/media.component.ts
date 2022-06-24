@@ -3,7 +3,13 @@
  * MediaComponent in that array
  */
 
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-media',
@@ -24,12 +30,38 @@ export class MediaComponent implements OnInit {
    */
   @Input()
   media: any;
+  /**
+   * Notify the Parent component by triggering an event.
+   *
+   * Here I also like to follow #angular_convention for naming events. I use
+   * verb appended by a noun usually.
+   *
+   * You can initialize it:
+   *   - Inline
+   *   - Inside the constructor - My preference
+   * But initializing in ngOnInit - ngOnInit(){this.deleteMedia = new EventEmitter<number>()} -
+   * doesn't work because Angular subscribes to the event emitter before ngOnInit is called.
+   * And it can't subscribe to it if it doesn't exist.
+   *
+   * IDK why but
+   * We can use aliasing too - @Output('aliasName') - but it is recommended to avoid it.
+   */
+  @Output()
+  deleteMedia: EventEmitter<number>;
 
-  constructor() {}
+  constructor() {
+    this.deleteMedia = new EventEmitter<number>();
+  }
 
   ngOnInit(): void {}
 
-  onClickDelete() {
-    console.log('Media delete called');
+  /**
+   * You can see my mind transformation over naming #my_convention.
+   */
+  onClickDeleteMedia(id: number) {
+    /**
+     * We can specify a data to pass a data or we can leave it
+     */
+    this.deleteMedia.emit(id);
   }
 }

@@ -39,4 +39,12 @@ export class AppComponent {
     watchedOn: '1994',
     isFavorite: true,
   };
+
+  /**
+   * #my_convention
+   * Learn more in media.component.html in anchor tag
+   */
+  onDeleteMedia(id: number) {
+    console.log(id);
+  }
 }

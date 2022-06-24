@@ -12,6 +12,10 @@
       which in this case there is not any built-in property since it is a
       custom element. So at last Angular search for properties annotate with
       @Input.
+    - Here we grab the passed data through the triggered event via the $event variable
    -->
-  <app-media [media]="mediaItem"></app-media>
+  <app-media
+    [media]="mediaItem"
+    (deleteMedia)="onDeleteMedia($event)"
+  ></app-media>
 </section>

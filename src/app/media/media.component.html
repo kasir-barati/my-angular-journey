@@ -33,10 +33,11 @@
   <!-- 
     Native DOM events or custom events you have created.
       - Native DOM events in Angular discarded the "on" part as you see here
-      - This is my convention:
+      - This is #my_convention:
         - Prefix the method name with event name - In this example: Click - and 
-          to make it readable I prepend the "on" word too
+          to make it readable I prepend the "on" word too. At last we need a noun
+          to state our function name more vividly
    -->
-  <a class="delete" (click)="onClickDelete()">remove</a>
+  <a class="delete" (click)="onClickDeleteMedia(media.id)">remove</a>
   <a class="details">watch</a>
 </div>

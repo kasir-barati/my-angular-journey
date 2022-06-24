@@ -19,6 +19,10 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
+  /**
+   * Load component on the first match, unlike what we have in nested modules.
+   * In other word we cannot have multiple <app-root></app-root>
+   */
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -14,8 +14,12 @@
     <li>
       <label for="medium">Medium</label>
       <select name="medium" id="medium" ngModel>
-        <option value="Movies">Movies</option>
-        <option value="Series">Series</option>
+        <option
+          *ngFor="let medium of lookupList.mediums"
+          [value]="medium"
+        >
+          {{ medium }}
+        </option>
       </select>
     </li>
     <li>

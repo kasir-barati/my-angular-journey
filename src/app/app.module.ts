@@ -15,6 +15,14 @@ import { FavoriteDirective } from './media/directive/favorite.directive';
 import { CategoryListPipe } from './medias/pipes/category-list.pipe';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { AddMediaReactiveFormComponent } from './add-media-reactive-form/add-media-reactive-form.component';
+import { LookupList } from './lookup-list.model';
+
+/**
+ * IDK either it is a good thing and where do we need it
+ */
+const lookupList: LookupList = {
+  mediums: ['Movies', 'Series'],
+};
 
 /**
  * imports: Usually things that our app needs to perform as it intended
@@ -41,7 +49,12 @@ import { AddMediaReactiveFormComponent } from './add-media-reactive-form/add-med
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'lookupListToken',
+      useValue: lookupList,
+    },
+  ],
   /**
    * Load component on the first match, unlike what we have in nested modules.
    * In other word we cannot have multiple <app-root></app-root>

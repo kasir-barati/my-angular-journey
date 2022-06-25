@@ -195,10 +195,14 @@
 - Dependency Injection
   - IoC - Inversion of Control
   - Instead of module goes out and get an instance from them, we provide them what they need.
-- `constructor(className: ClassName) {}` and Angular DI create an instance for you.
+- `constructor(private className: ClassName) {}` and Angular DI create an instance for you.
 - We can do inject in two way:
   - By leveraging Typescript type annotation which we call it constructor injection
+    - This is possible in class types
+    - e.x. `constructor(private mediaService: MediaService) {}`
   - By using `@Inject` decorator
+    - Useful for value types
+    - e.x. `constructor(@Inject('lookupListToken') public lookupList: LookupList) {}`
 - Injectable classes can be accessible through DI from the component it is listed in a `providers` list.
   - If you register it in the bootstrap level - In which we/cli does for us by `providedIn: 'root'` - it can be injected in all components
   - If it is registered in a component it can be injected in that component and its children component.

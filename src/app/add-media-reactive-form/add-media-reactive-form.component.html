@@ -8,7 +8,11 @@
   <ul>
     <li>
       <label for="medium">Medium</label>
-      <select name="medium" id="medium" formControlName="medium">
+      <select
+        name="medium"
+        id="medium"
+        [formControl]="addMediaForm.controls.medium"
+      >
         <option value="Movies">Movies</option>
         <option value="Series">Series</option>
       </select>
@@ -19,7 +23,7 @@
         type="text"
         name="name"
         id="name"
-        formControlName="name"
+        [formControl]="addMediaForm.controls.name"
       />
     </li>
     <li>
@@ -31,7 +35,7 @@
       <select
         name="category"
         id="catefory"
-        formControlName="category"
+        [formControl]="addMediaForm.controls.category"
       >
         <option value="Action">Action</option>
         <option value="Science Fiction">Science Fiction</option>
@@ -47,7 +51,7 @@
         type="text"
         name="year"
         id="year"
-        formControlName="year"
+        [formControl]="addMediaForm.controls.year"
       />
     </li>
     <li>

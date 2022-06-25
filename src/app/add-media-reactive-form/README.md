@@ -14,3 +14,20 @@
    - `[formGroup]="addMediaForm"`
 6. Connect each form's element to a form group field via `formControlName` directive
 7. Lastly change the forms behavior on submit via introducing your own method to angular: `(ngSubmit)="onSubmitAddMedia(addMediaForm.value)"`
+
+## Strongly typed reactive forms
+
+- [Reference is this LinkedIn article](https://www.linkedin.com/pulse/3-steps-make-your-reactive-form-typesafe-angular-aart-den-braber/).
+- Please do not put an `I` in front of your interfaces. Based on what I've learned through a tutorial about clean code.
+  - Bad & Ugly: `IMedia`
+  - Good & Pretty: `Media`
+- We have 3 way to do it:
+
+1. Define an interface for media.
+   - I have my own - It is not totally mine - conventions here:
+     - Create a `model-name.model.ts` file in the related module
+     - I did in the `src/app/media` directory
+2. Declare a custom `interface` interface which inherits from `FormGroup`
+   - To initialize the form. For the values
+   - I have my own way here, I am honest this is totally personal preference.
+     - Create a `add-media-form-group.model.ts` in the related module

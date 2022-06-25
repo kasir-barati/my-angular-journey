@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Media } from '../media/media.model';
+
 @Component({
   selector: 'app-medias',
   templateUrl: './medias.component.html',
   styleUrls: ['./medias.component.css'],
 })
 export class MediasComponent implements OnInit {
-  medias = [
+  medias: Media[] = [
     {
       id: 1,
       name: 'My Angular Journey',

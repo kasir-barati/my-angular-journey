@@ -333,3 +333,9 @@
     - We also need to rearise error again. Because in the component we wanna define subscriber for the errors.
       - Here is where we wanna use `throwError` creation function
       - TODO: Write more about it
+
+# Lazy loading
+
+- We can load more module/component as user asks for more
+- Faster load
+- Leveraged by `import` function

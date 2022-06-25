@@ -203,6 +203,7 @@
   - By using `@Inject` decorator
     - Useful for value types
     - e.x. `constructor(@Inject('lookupListToken') public lookupList: LookupList) {}`
+      - But here we have a bad ugly code. Yes I am talking about that `'lookupListToken'`. We can illuminate it via using `InjectionToken`
 - Injectable classes can be accessible through DI from the component it is listed in a `providers` list.
   - If you register it in the bootstrap level - In which we/cli does for us by `providedIn: 'root'` - it can be injected in all components
   - If it is registered in a component it can be injected in that component and its children component.

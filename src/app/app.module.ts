@@ -15,14 +15,7 @@ import { FavoriteDirective } from './media/directive/favorite.directive';
 import { CategoryListPipe } from './medias/pipes/category-list.pipe';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { AddMediaReactiveFormComponent } from './add-media-reactive-form/add-media-reactive-form.component';
-import { LookupList } from './lookup-list.model';
-
-/**
- * IDK either it is a good thing and where do we need it
- */
-const lookupList: LookupList = {
-  mediums: ['Movies', 'Series'],
-};
+import { lookupList, lookupListToken } from './value-providers';
 
 /**
  * imports: Usually things that our app needs to perform as it intended
@@ -51,7 +44,7 @@ const lookupList: LookupList = {
   ],
   providers: [
     {
-      provide: 'lookupListToken',
+      provide: lookupListToken,
       useValue: lookupList,
     },
   ],

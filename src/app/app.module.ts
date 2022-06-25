@@ -14,6 +14,7 @@ import { MediasComponent } from './medias/medias.component';
 import { FavoriteDirective } from './media/directive/favorite.directive';
 import { CategoryListPipe } from './medias/pipes/category-list.pipe';
 import { AddMediaComponent } from './add-media/add-media.component';
+import { AddMediaReactiveFormComponent } from './add-media-reactive-form/add-media-reactive-form.component';
 
 /**
  * imports: Usually things that our app needs to perform as it intended
@@ -32,6 +33,7 @@ import { AddMediaComponent } from './add-media/add-media.component';
     FavoriteDirective,
     CategoryListPipe,
     AddMediaComponent,
+    AddMediaReactiveFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

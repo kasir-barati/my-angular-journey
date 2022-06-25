@@ -247,6 +247,7 @@
   - Async and sync validators
   - Track changes and revalidate forms data
 - Showing errors to the user
+- We can use both of the following approaches in unison.
 - Two way to create forms:
   - **Template-driven**:
     - Template is the major part engaged in form logic.
@@ -255,7 +256,16 @@
       - It detects forms by means of `ngForm` directive - `#addMediaForm="ngForm"`.
       - It detects forms' fields through `ngModel` directive
   - **Model-driven**:
-    - Majority of form logic is crafted in model.
+    - Reactive approach
+    - Majority of form logic is crafted in component's class.
     - [My task tracker Angular app also contains good information](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/app/add-task/README.md).
-- You can see a clear difference between template-driven and model-driven in [this PR](https://github.com/kasir-barati/task-tracker-traversy-media/pull/4/files) very clear and I tried to state it vividly and readily.s
+    - The negative focal point in this approach is that our form is loosely typed. To reach a better standard living alongside of our code we can [make it strongly types](https://www.linkedin.com/pulse/3-steps-make-your-reactive-form-typesafe-angular-aart-den-braber/)
+    - Add `ReactiveFormsModule` in `AppModule`'s `imports` list.
+- You can see a clear difference between template-driven and model-driven in [this PR](https://github.com/kasir-barati/task-tracker-traversy-media/pull/4/files) very clear and I tried to state it vividly and readily.
+  - Here is some advantages you gain by using model-drive approach:
+    - More flexibility in form validation
+      - Rules
+      - Error messages
+    - Subscribing to the form changes
+    - An sensible choice for those who loves to do unit test
 - You can see a good implementation on how to work with `HttpClient` in Angular in [this PR](https://github.com/kasir-barati/my-tour-of-heroes-angular/pull/6/files). Please read the whole codebase, that's how you get a more natural feeling about RxJS.

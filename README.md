@@ -292,3 +292,16 @@
 - Add `HttpClientModule` in `AppModule`'s `imports` list
 - RxJS based
 - built-in tool to make http calls from client side
+- `HttpClient` is a class who creates http request
+  - A service - Use it with DI
+  - We do not wanna to have http responses in the components, I mean it is the service layer duty to normalize data using RxJS operators.
+- Create a mock backend:
+  - Add `angular-in-memory`-web-api` package
+    - `pnpm add -D angular-in-memory-web-api`
+      - A tut on how to use [angular-in-memory-web-api](https://blog.logrocket.com/angular-in-memory-web-api-tutorial-mocking-crud-apis-in-angular/)
+    - Then `ng generate service mock-server/in-memory-data`
+    - Copy the content of `this file `src/app/mock-server/in-memory-data.service.ts`
+  - Endpoint are `api/resource-name`
+    - For example `api/medias`
+- Use `environment.ts` for base url:
+  - [Read more here](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/environments/README.md).

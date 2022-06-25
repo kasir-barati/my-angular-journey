@@ -3,7 +3,7 @@
     {{ medias | categoryList }}
   </div>
 </header>
-<section>
+<section *ngIf="medias.length > 0">
   <!-- 
     - Property binding syntax to pass data to the child component
     - We call media "binding target" and we call mediaItem "binding source"

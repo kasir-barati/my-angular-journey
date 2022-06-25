@@ -8,6 +8,7 @@ import {
 
 import { AddMediaFormGroup } from './add-media-form-group.model';
 import { Media } from '../media/media.model';
+import { MediaService } from '../media/services/media.service';
 
 @Component({
   selector: 'app-add-media-reactive-form',
@@ -20,7 +21,10 @@ export class AddMediaReactiveFormComponent implements OnInit {
   /**
    * Here we are relying on constructor injection
    */
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private mediaService: MediaService,
+  ) {}
 
   ngOnInit(): void {
     /**
@@ -66,7 +70,6 @@ export class AddMediaReactiveFormComponent implements OnInit {
   }
 
   onSubmitAddMedia(media: Media) {
-    console.log(media.name);
-    console.log(this.addMediaForm.value.isFavorite);
+    this.mediaService.add(media);
   }
 }

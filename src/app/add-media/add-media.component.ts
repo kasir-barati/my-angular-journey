@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Media } from '../media/media.model';
+import { MediaService } from '../media/services/media.service';
 
 @Component({
   selector: 'app-add-media',
@@ -7,12 +9,11 @@ import { Media } from '../media/media.model';
   styleUrls: ['./add-media.component.css'],
 })
 export class AddMediaComponent implements OnInit {
-  constructor() {}
+  constructor(private mediaService: MediaService) {}
 
   ngOnInit(): void {}
 
   osSubmitMedia(media: Media) {
-    debugger;
-    console.log(media);
+    this.mediaService.add(media);
   }
 }

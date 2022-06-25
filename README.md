@@ -214,6 +214,7 @@
 - A simple class annotated with `@Injectable` decorator
 - To inject service in another class you need to add it in `providers` list.
   - but Angular CLI - `ng generate service service-name` - does something a little more general, It will add that class inside the globally available services. In this way we do not need to list them in `providers`
+- Create a new service via CLI by this command: `ng generate service media/services/media`
 
 # Data persistence
 

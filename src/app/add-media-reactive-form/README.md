@@ -41,6 +41,10 @@
 - 2 Approaches:
   - Custom:
     - We wrote them obviously
+    - We can also define it right in the class as I did for the year.
+    - A function that will receive an argument - Angular pass it as a `FormGroup` or `FormControl` or `FormArray` - and returns null which specify no error or an object which tells Angular it is invalid.
+    - [An custom example which also takes an error message](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/app/shared/validators/is-boolean.validator.ts). Please note that I handled the error message in [a component](https://github.com/kasir-barati/task-tracker-traversy-media/tree/dev/src/app/shared/validation-errors) by myself.
+      - As you can see in the `yearValidator` we have to behave a little different than what I did in this repo. BTW it wont heart it too much. Just a small change - `AbstractControl` instead of `FormControl` in the function signature.
   - Built-in ones.
     - Those in `Validators` class.
       - e.x. `name: new FormControl(Validators.required)`

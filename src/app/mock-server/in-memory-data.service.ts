@@ -14,16 +14,16 @@ export class InMemoryDataService implements InMemoryDbService {
       medias: [
         {
           id: 1,
-          name: 'My Angular Journey',
-          medium: 'Series',
-          category: 'Asian',
+          name: 'M 1',
+          medium: 'Movies',
+          category: 'Anime',
           year: '2022',
           watchedOn: '1994',
           isFavorite: true,
         },
         {
           id: 2,
-          name: 'My Angular Journey',
+          name: 'S 1',
           medium: 'Series',
           category: 'Sci-Fi',
           year: '2022',
@@ -32,8 +32,8 @@ export class InMemoryDataService implements InMemoryDbService {
         },
         {
           id: 3,
-          name: 'My Angular Journey',
-          medium: 'Series',
+          name: 'M 2',
+          medium: 'Movies',
           category: 'Sci',
           year: '2022',
           watchedOn: '1994',
@@ -41,7 +41,7 @@ export class InMemoryDataService implements InMemoryDbService {
         },
         {
           id: 4,
-          name: 'My Angular Journey',
+          name: 'S 2',
           medium: 'Series',
           category: 'Anime',
           year: '2022',

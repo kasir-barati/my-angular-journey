@@ -3,6 +3,22 @@
     {{ medias | categoryList }}
   </div>
 </header>
+<section>
+  <button
+    #moviesButton
+    (click)="filterByMedium(moviesButton.name)"
+    name="Movies"
+  >
+    Filter by Movies
+  </button>
+  <button
+    #seriesButton
+    (click)="filterByMedium(seriesButton.name)"
+    name="Series"
+  >
+    Filter by Series
+  </button>
+</section>
 <section *ngIf="medias.length > 0">
   <!-- 
     - Property binding syntax to pass data to the child component

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -36,13 +36,22 @@ export class MediaService {
     );
   }
 
-  get(): Observable<Media[]> {
-    return this.httpClient.get<Media[]>(this.baseUrl).pipe(
-      map((media) => {
-        // TODO: Do required normalization
-        return media;
-      }),
-    );
+  get(filters: Partial<Media> = {}): Observable<Media[]> {
+    const illuminateNils = JSON.parse(JSON.stringify(filters));
+    const params = new HttpParams({
+      fromObject: illuminateNils,
+    });
+
+    return this.httpClient
+      .get<Media[]>(this.baseUrl, {
+        params,
+      })
+      .pipe(
+        map((media) => {
+          // TODO: Do required normalization
+          return media;
+        }),
+      );
   }
 
   delete(id: number): Observable<Media> {

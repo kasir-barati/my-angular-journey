@@ -30,4 +30,18 @@ export class MediasComponent implements OnInit {
   onDeleteMedia(id: number) {
     this.mediaService.delete(id);
   }
+
+  filterByMedium(medium: string) {
+    this.mediaService.get({ medium }).subscribe({
+      next: (medias) => {
+        this.medias = medias;
+      },
+      error: (error) => {
+        this.medias = [];
+      },
+      complete: () => {
+        console.info('Filtering completed');
+      },
+    });
+  }
 }

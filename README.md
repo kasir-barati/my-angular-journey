@@ -206,8 +206,11 @@
 # Service
 
 - Contains business logic
-- No business logic in component
-  - Separate view from business logics
+- Why Services?
+  - No business logic in component
+    - Separate view from business logics
+  - It is a good data access layer. Getting and setting data from your data store.
+  - Easier unit-test due to simplicity to mock a service.
 - A simple class annotated with `@Injectable` decorator
 - To inject service in another class you need to add it in `providers` list.
   - but Angular CLI - `ng generate service service-name` - does something a little more general, It will add that class inside the globally available services. In this way we do not need to list them in `providers`

@@ -261,6 +261,7 @@
     - [My task tracker Angular app also contains good information](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/app/add-task/README.md).
     - The negative focal point in this approach is that our form is loosely typed. To reach a better standard living alongside of our code we can [make it strongly types](https://www.linkedin.com/pulse/3-steps-make-your-reactive-form-typesafe-angular-aart-den-braber/)
     - Add `ReactiveFormsModule` in `AppModule`'s `imports` list.
+    - :warning:**Please read src/app/add-media-reactive-form/README.md for sure. It contains form validation details.**:warning:
 - You can see a clear difference between template-driven and model-driven in [this PR](https://github.com/kasir-barati/task-tracker-traversy-media/pull/4/files) very clear and I tried to state it vividly and readily.
   - Here is some advantages you gain by using model-drive approach:
     - More flexibility in form validation

@@ -234,13 +234,28 @@
 - Do not refresh the whole page
 - Just change the components
 - You can in Angular know about what where user and send him back and forth between routes
+- Angular needs to the `<base href="/" />` tag, because:
+  - Angular router module uses browser history **push state** for navigation and url interaction
+    - This allow us to have different routes without revising your backend endpoints
+      [- GitHub repo[https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev]
+  - To support **push state** you need this html tag inside your `head` tag.
 - `RouterModule`
   - Routing configuration:
     - `Routes`
     - `Route`
   - [Routing events](https://angular.io/api/router/Event)
-  - `routerLink` directive that do routing
-  - `<router-outlet></router-outlet>` directive that specifies where the component should be shown after route changed.
+  - `routerLink`
+    - Directive that do its brokery job
+    - We pass the url we wanna go to
+    - We can do the routing in component too.
+      - Inject `Router` service
+      - e.x. to navigate user after creating a new media to its related pages we can do
+        - `this.router.navigate(['/path', media.medium]);`
+  - `<router-outlet></router-outlet>`
+    - Structural directive
+    - that specifies where the component should be shown after route changed.
+- Learn more in [this repo](https://github.com/kasir-barati/my-tour-of-heroes-angular) or [this one]()
+- As our app gets bigger it is really easy to get lost in routing and other stuff. So instead we can group related things in a module and now we can do their routing inside their own module. Exactly like what we have in NestJS.
 
 # Angular Modules
 

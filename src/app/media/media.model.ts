@@ -4,8 +4,8 @@ export interface Media {
   // Comes from server. probably
   medium: string;
   // Comes from server. probably
-  category: string;
-  year: string;
-  watchedOn: string;
-  isFavorite: boolean;
+  category: string | null;
+  year: string | null;
+  watchedOn: string | null;
+  isFavorite: boolean | null;
 }

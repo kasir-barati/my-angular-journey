@@ -1,9 +1,15 @@
 <header>
   <h2>Add media to watch</h2>
 </header>
+<!-- 
+  If we use addMediaForm.value Typescript will complain about this fact: 
+  https://angular.io/guide/typed-forms#partial-values
+  To bypass the emerged Typescript error we can use addMediaForm.getRawValue()
+  Now we need to make a little adjustment in our Media interface.
+ -->
 <form
   [formGroup]="addMediaForm"
-  (ngSubmit)="onSubmitAddMedia(addMediaForm.value)"
+  (ngSubmit)="onSubmitAddMedia(addMediaForm.getRawValue())"
 >
   <ul>
     <li>

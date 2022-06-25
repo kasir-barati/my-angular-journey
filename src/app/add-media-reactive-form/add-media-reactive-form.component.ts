@@ -10,23 +10,23 @@ import { Media } from '../media/media.model';
   styleUrls: ['./add-media-reactive-form.component.css'],
 })
 export class AddMediaReactiveFormComponent implements OnInit {
-  addMediaForm: AddMediaFormGroup;
+  addMediaForm: FormGroup<AddMediaFormGroup>;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.addMediaForm = new FormGroup({
-      medium: new FormControl('Movies'),
-      name: new FormControl(''),
-      category: new FormControl(''),
-      year: new FormControl(''),
-      isFavorite: new FormControl(true),
-      watchedOn: new FormControl(''),
-    }) as AddMediaFormGroup;
+    this.addMediaForm = new FormGroup<AddMediaFormGroup>({
+      medium: new FormControl('Movies', { nonNullable: true }),
+      name: new FormControl('', { nonNullable: true }),
+      category: new FormControl(),
+      year: new FormControl(),
+      isFavorite: new FormControl(),
+      watchedOn: new FormControl(),
+    });
   }
 
   onSubmitAddMedia(media: Media) {
-    console.log(media);
+    console.log(media.name);
     console.log(this.addMediaForm.value.isFavorite);
   }
 }

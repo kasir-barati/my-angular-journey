@@ -64,7 +64,9 @@
       <!-- 
         Note that in template-driven forms we follow venerable good HTML standards
        -->
-      <button type="submit">Add media</button>
+      <button type="submit" [disabled]="!addMediaForm.valid">
+        Add media
+      </button>
     </li>
   </ul>
 </form>

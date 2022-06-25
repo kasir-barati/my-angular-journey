@@ -33,3 +33,18 @@
       - Create a `add-media-form-group.model.ts` in the related module
       - In this example it is `AddMediaFormGroup`
   3.  Now your `Media` interface and `AddMediaFormGroup` should be compatible. In my case I forced to add `| null` everywhere that my form has already said this is nullable. TBH This was my fault, I confess it. My `Media` interface should imitate this rules. BTW I mean this is not a negative point.
+
+## Validation
+
+- :warning:**A very complete validator is implemented in [this repository](https://github.com/kasir-barati/task-tracker-traversy-media). Please see it for a better comprehension about reactive forms validation**:warning:.
+- Here I am gonna stick to some basic principles and maybe I used a 3rd party library
+- 2 Approaches:
+  - Custom:
+    - We wrote them obviously
+  - Built-in ones.
+    - Those in `Validators` class.
+      - e.x. `name: new FormControl(Validators.required)`
+    - When a defined field in a `FormGroup` disobey and breaks the rules Angular will apply `ng-invalid` class to that form's element.
+    - Angular track our apps status but it is up to us to make the submit button disable.
+      - Bind `disabled` to form validity status:
+      - e.x. `<button type="submit" [disabled]="!addMediaForm.valid" >Add media</button>`

@@ -35,8 +35,8 @@ export class FavoriteDirective {
    * majFavorite name. And here I said if that property's value changed re-execute this setter
    */
   @Input()
-  set majFavorite(value: boolean) {
-    this.isFavorite = value;
+  set majFavorite(value: boolean | null) {
+    this.isFavorite = value || false;
   }
 
   /**

@@ -11,10 +11,16 @@ import { MediaService } from '../media/services/media.service';
 export class MediasComponent implements OnInit {
   medias: Media[];
 
-  constructor(private mediaService: MediaService) {}
+  constructor(private mediaService: MediaService) {
+    this.medias = [];
+  }
 
   ngOnInit(): void {
-    this.medias = this.mediaService.get();
+    this.mediaService.get().subscribe({
+      next: (medias) => (this.medias = medias),
+      error: (error) => (this.medias = []),
+      complete: () => console.log('Medias fetched.'),
+    });
   }
 
   /**
@@ -23,5 +29,19 @@ export class MediasComponent implements OnInit {
    */
   onDeleteMedia(id: number) {
     this.mediaService.delete(id);
+  }
+
+  filterByMedium(medium: string) {
+    this.mediaService.get({ medium }).subscribe({
+      next: (medias) => {
+        this.medias = medias;
+      },
+      error: (error) => {
+        this.medias = [];
+      },
+      complete: () => {
+        console.info('Filtering completed');
+      },
+    });
   }
 }

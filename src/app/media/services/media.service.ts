@@ -1,6 +1,9 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 import { Media } from '../media.model';
+import { environment } from 'src/environments/environment';
 
 /**
  * The providedIn: 'root' command Angular to register it in the bootstrapping application
@@ -14,83 +17,72 @@ import { Media } from '../media.model';
   providedIn: 'root',
 })
 export class MediaService {
-  private medias: Media[];
+  private readonly baseUrl: string;
 
-  constructor() {
-    this.medias = [
-      {
-        id: 1,
-        name: 'My Angular Journey',
-        medium: 'Series',
-        category: 'Asian',
-        year: '2022',
-        watchedOn: '1994',
-        isFavorite: true,
-      },
-      {
-        id: 2,
-        name: 'My Angular Journey',
-        medium: 'Series',
-        category: 'Sci-Fi',
-        year: '2022',
-        watchedOn: '1994',
-        isFavorite: true,
-      },
-      {
-        id: 3,
-        name: 'My Angular Journey',
-        medium: 'Series',
-        category: 'Sci',
-        year: '2022',
-        watchedOn: '1994',
-        isFavorite: true,
-      },
-      {
-        id: 4,
-        name: 'My Angular Journey',
-        medium: 'Series',
-        category: 'Anime',
-        year: '2022',
-        watchedOn: '1994',
-        isFavorite: false,
-      },
-    ];
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = environment.baseUrl.concat('/medias');
   }
 
-  private genId(): number {
-    return Math.ceil(Math.random() * 1000000);
-  }
-
-  add(media: Media): void {
+  add(media: Media): Observable<Media> {
     /**
      * check if it is already in the array? or server? It is obvious
      * It is server responsibility, Why? because server may updated data.
      */
-    this.medias.push({ ...media, id: this.genId() });
+    return this.httpClient.post<Media>(this.baseUrl, media).pipe(
+      map((media) => {
+        // TODO: Do required normalization
+        return media;
+      }),
+      catchError(this.normalizeError),
+    );
   }
 
-  get(): Media[] {
-    return this.medias;
+  get(filters: Partial<Media> = {}): Observable<Media[]> {
+    const illuminateNils = JSON.parse(JSON.stringify(filters));
+    const params = new HttpParams({
+      fromObject: illuminateNils,
+    });
+
+    return this.httpClient
+      .get<Media[]>(this.baseUrl, {
+        params,
+      })
+      .pipe(
+        map((media) => {
+          // TODO: Do required normalization
+          return media;
+        }),
+        catchError(this.normalizeError),
+      );
   }
 
-  delete(id: number): void {
-    this.medias = this.medias.filter((media) => media.id === id);
+  delete(id: number): Observable<Media> {
+    return this.httpClient
+      .delete<Media>(this.baseUrl.concat('/', String(id)))
+      .pipe(
+        map((media) => {
+          // TODO: Do required normalization
+          return media;
+        }),
+        catchError(this.normalizeError),
+      );
   }
 
-  update(id: number, media: Media): void {
-    /**
-     * I doubt this is a good way to do it.
-     */
-    for (let index = 0; index < this.medias.length; index++) {
-      if (this.medias[index].id === id) {
-        const { id: ignoreId, ...rest } = this.medias[index];
+  update(id: number, media: Media): Observable<Media> {
+    return this.httpClient
+      .put<Media>(this.baseUrl.concat('/', String(id)), media)
+      .pipe(
+        map((media) => {
+          // TODO: Do required normalization
+          return media;
+        }),
+        catchError(this.normalizeError),
+      );
+  }
 
-        this.medias[index] = {
-          ...this.medias[index],
-          ...rest,
-        };
-        break;
-      }
-    }
+  private normalizeError(error: any) {
+    // Normalize error
+    console.error(error);
+    return throwError(() => new Error('E'));
   }
 }

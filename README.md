@@ -17,6 +17,7 @@
   - [Service](#service)
 - Angular leverages decorators to configure our Angular app. IMO this is really smooth.
 - [Angular CLI](./ng-cli.md).
+- If you do not use a module and do not list it in the `imports` list your overall bundled app size would be smaller.
 
 # What I use in Angular:
 
@@ -30,10 +31,7 @@
 
 - [Template Syntax](#angular-template-syntax)
 - [Routing](#routing)
-- Http
-  - `HttpClientModule`
-  - RxJS based
-  - built-in
+- [Http Client Module](#http-client-module)
 - [Services](#service)
 - [Forms](#angular-forms)
 
@@ -236,13 +234,28 @@
 - Do not refresh the whole page
 - Just change the components
 - You can in Angular know about what where user and send him back and forth between routes
+- Angular needs to the `<base href="/" />` tag, because:
+  - Angular router module uses browser history **push state** for navigation and url interaction
+    - This allow us to have different routes without revising your backend endpoints
+      [- GitHub repo[https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev]
+  - To support **push state** you need this html tag inside your `head` tag.
 - `RouterModule`
   - Routing configuration:
     - `Routes`
     - `Route`
   - [Routing events](https://angular.io/api/router/Event)
-  - `routerLink` directive that do routing
-  - `<router-outlet></router-outlet>` directive that specifies where the component should be shown after route changed.
+  - `routerLink`
+    - Directive that do its brokery job
+    - We pass the url we wanna go to
+    - We can do the routing in component too.
+      - Inject `Router` service
+      - e.x. to navigate user after creating a new media to its related pages we can do
+        - `this.router.navigate(['/path', media.medium]);`
+  - `<router-outlet></router-outlet>`
+    - Structural directive
+    - that specifies where the component should be shown after route changed.
+- Learn more in [this repo](https://github.com/kasir-barati/my-tour-of-heroes-angular) or [this one]()
+- As our app gets bigger it is really easy to get lost in routing and other stuff. So instead we can group related things in a module and now we can do their routing inside their own module. Exactly like what we have in NestJS.
 
 # Angular Modules
 
@@ -288,3 +301,49 @@
     - Subscribing to the form changes
     - An sensible choice for those who loves to do unit test
 - You can see a good implementation on how to work with `HttpClient` in Angular in [this PR](https://github.com/kasir-barati/my-tour-of-heroes-angular/pull/6/files). Please read the whole codebase, that's how you get a more natural feeling about RxJS.
+
+# Http Client Module
+
+- Add `HttpClientModule` in `AppModule`'s `imports` list
+- RxJS based
+- built-in tool to make http calls from client side
+- `HttpClient` is a class who creates http request
+  - A service - Use it with DI
+  - We do not wanna to have http responses in the components, I mean it is the service layer duty to normalize data using RxJS operators.
+- Create a mock backend:
+  - Add `angular-in-memory`-web-api` package
+    - `pnpm add -D angular-in-memory-web-api`
+      - A tut on how to use [angular-in-memory-web-api](https://blog.logrocket.com/angular-in-memory-web-api-tutorial-mocking-crud-apis-in-angular/)
+    - Then `ng generate service mock-server/in-memory-data`
+    - Copy the content of `this file `src/app/mock-server/in-memory-data.service.ts`
+  - Endpoint are `api/resource-name`
+    - For example `api/medias`
+- Use `environment.ts` for base url:
+  - [Read more here](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/environments/README.md).
+- `HttpClient` service detects data types and set the `content-type` header automatically.
+- It is almost all the time possible to face bug. So we take advantages RxJS operators.
+  - `catchError`
+    - TODO: Write more about it
+    - An operator
+    - It will catch errors that thrown by the observable.
+    - We wanna manage errors in one function.
+      - Please note that I also read The Pragmatic Programmer and knows that they believe with certitude in **Crash Early** and I too. But here we are talking about showing user friendly messages, not technical messages - Event due this should not be the case, AFAIK we in the backend should avoid to disclose any technical message. At last we have the right to show you 500 with Server Error message - that looks gibberish.
+    - I am not 100% sure but I guess if we use promises inside the observables things goes to blow up.
+      - I mean I think we should convert promises into observables to take advantages of this operator to handle errors
+    - We also need to rearise error again. Because in the component we wanna define subscriber for the errors.
+      - Here is where we wanna use `throwError` creation function
+      - TODO: Write more about it
+
+# Lazy loading
+
+- We can load more module/component as user asks for more
+- Faster load
+- Leveraged by `import` function
+
+# View encapsulation
+
+- Angular accepts:
+  - Native: **Deprecated**, Do nothing
+  - None: Do nothing. Deliver it as-is
+  - Shadow DOM: Browser related. Browser restructure your HTML and CSS. Not supported in all browsers.
+  - Emulated: **Default**, Done by Angular to imitate the shadow DOM.

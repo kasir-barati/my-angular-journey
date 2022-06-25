@@ -1,0 +1,51 @@
+<header>
+  <h2>Add media to watch</h2>
+</header>
+<!-- 
+  Correct usage:
+  - <form #addMediaForm="ngForm" (ngSubmit)="osSubmitMedia(addMediaForm.value)" >
+  - <form #addMediaForm="ngForm" (ngSubmit)="osSubmitMedia(addMediaForm.form.value)" >
+ -->
+<form
+  #addMediaForm="ngForm"
+  (ngSubmit)="osSubmitMedia(addMediaForm.form.value)"
+>
+  <ul>
+    <li>
+      <label for="medium">Medium</label>
+      <select name="medium" id="medium" ngModel>
+        <option
+          *ngFor="let medium of lookupList.mediums"
+          [value]="medium"
+        >
+          {{ medium }}
+        </option>
+      </select>
+    </li>
+    <li>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" ngModel />
+    </li>
+    <li>
+      <label for="Category">Category</label>
+      <!-- 
+        TODO: Get these list from a backend.
+        It can be written in anything, But I will do it in dJango. BTW you can do it in Node.js
+       -->
+      <select name="category" id="catefory" ngModel>
+        <option value="Action">Action</option>
+        <option value="Science Fiction">Science Fiction</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Horror">Horror</option>
+        <option value="Romance">Romance</option>
+      </select>
+    </li>
+    <li>
+      <!-- 
+        Note that in template-driven forms we follow venerable good HTML standards
+       -->
+      <button type="submit">Add media</button>
+    </li>
+  </ul>
+</form>

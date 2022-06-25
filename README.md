@@ -35,6 +35,7 @@
   - RxJS based
   - built-in
 - [Services](#service)
+- [Forms](#angular-forms)
 
 # Components
 
@@ -194,16 +195,31 @@
 - Dependency Injection
   - IoC - Inversion of Control
   - Instead of module goes out and get an instance from them, we provide them what they need.
-- `constructor(className: ClassName) {}` and Angular DI create an instance for you.
+- `constructor(private className: ClassName) {}` and Angular DI create an instance for you.
+- We can do inject in two way:
+  - By leveraging Typescript type annotation which we call it constructor injection
+    - This is possible in class types
+    - e.x. `constructor(private mediaService: MediaService) {}`
+  - By using `@Inject` decorator
+    - Useful for value types
+    - e.x. `constructor(@Inject('lookupListToken') public lookupList: LookupList) {}`
+      - But here we have a bad ugly code. Yes I am talking about that `'lookupListToken'`. We can illuminate it via using `InjectionToken`
+- Injectable classes can be accessible through DI from the component it is listed in a `providers` list.
+  - If you register it in the bootstrap level - In which we/cli does for us by `providedIn: 'root'` - it can be injected in all components
+  - If it is registered in a component it can be injected in that component and its children component.
 
 # Service
 
 - Contains business logic
-- No business logic in component
-  - Separate view from business logics
+- Why Services?
+  - No business logic in component
+    - Separate view from business logics
+  - It is a good data access layer. Getting and setting data from your data store.
+  - Easier unit-test due to simplicity to mock a service.
 - A simple class annotated with `@Injectable` decorator
 - To inject service in another class you need to add it in `providers` list.
   - but Angular CLI - `ng generate service service-name` - does something a little more general, It will add that class inside the globally available services. In this way we do not need to list them in `providers`
+- Create a new service via CLI by this command: `ng generate service media/services/media`
 
 # Data persistence
 
@@ -236,3 +252,39 @@
     - `imports`: Bring in other modules inside this module because this module needs something inside the other module.
     - `decorations`: Make other pipes/components/directives available inside the module which does not come with a module. For example usually our Angular app components, shared pipes/directives.
     - `bootstrap`: This conf is usually useful for `AppModule` which specify the root component which contains other components.
+
+# Angular Forms
+
+- Collect data
+  - Mainly by `<form></form>` element
+- Custom validators
+- Built-in data validators
+  - Async and sync validators
+  - Track changes and revalidate forms data
+- Showing errors to the user
+- We can use both of the following approaches in unison.
+- Two way to create forms:
+  - **Template-driven**:
+    - Template is the major part engaged in form logic.
+    - Add `FormsModule` in `AppModule`'s `imports` list.
+    - In this case we do not need to tell Angular where are our forms:
+      - It detects forms by means of `ngForm` directive - `#addMediaForm="ngForm"`.
+      - It detects forms' fields through `ngModel` directive
+  - **Model-driven**:
+    - Reactive approach
+    - Majority of form logic is crafted in component's class.
+    - [My task tracker Angular app also contains good information](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/app/add-task/README.md).
+    - The negative focal point in this approach is that our form is loosely typed. To reach a better standard living alongside of our code we can [make it strongly types](https://www.linkedin.com/pulse/3-steps-make-your-reactive-form-typesafe-angular-aart-den-braber/)
+    - Add `ReactiveFormsModule` in `AppModule`'s `imports` list.
+    - :warning:**Please read src/app/add-media-reactive-form/README.md for sure. It contains form validation details.**:warning:
+    - For error messages you have to check how I used it in [this repo](https://github.com/kasir-barati/task-tracker-traversy-media/tree/dev/src/app/shared/validation-errors).
+      - In short I defined a shared component which takes validation errors as input and shows it.
+      - As you may realize we have too uch power in custom validators.
+- You can see a clear difference between template-driven and model-driven in [this PR](https://github.com/kasir-barati/task-tracker-traversy-media/pull/4/files) very clear and I tried to state it vividly and readily.
+  - Here is some advantages you gain by using model-drive approach:
+    - More flexibility in form validation
+      - Rules
+      - Error messages
+    - Subscribing to the form changes
+    - An sensible choice for those who loves to do unit test
+- You can see a good implementation on how to work with `HttpClient` in Angular in [this PR](https://github.com/kasir-barati/my-tour-of-heroes-angular/pull/6/files). Please read the whole codebase, that's how you get a more natural feeling about RxJS.

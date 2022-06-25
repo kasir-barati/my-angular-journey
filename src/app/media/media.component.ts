@@ -11,6 +11,8 @@ import {
   Output,
 } from '@angular/core';
 
+import { Media } from './media.model';
+
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
@@ -22,14 +24,12 @@ export class MediaComponent implements OnInit {
    * we done it in app.component.html - <app-media></app-media> - we wanna support
    * property binding for media property.
    *
-   * FIXME: Do not use any as much as you can. For now bear with me, later on we will typify it.
-   *
    * IDK why TBH
    * We can also specify an alias for this property. For example: @Input('mediaItem')
    * BTW we are encouraged to avoid this renaming and use the same name.
    */
   @Input()
-  media: any;
+  media: Media;
   /**
    * Notify the Parent component by triggering an event.
    *

@@ -17,6 +17,7 @@
   - [Service](#service)
 - Angular leverages decorators to configure our Angular app. IMO this is really smooth.
 - [Angular CLI](./ng-cli.md).
+- If you do not use a module and do not list it in the `imports` list your overall bundled app size would be smaller.
 
 # What I use in Angular:
 
@@ -30,10 +31,7 @@
 
 - [Template Syntax](#angular-template-syntax)
 - [Routing](#routing)
-- Http
-  - `HttpClientModule`
-  - RxJS based
-  - built-in
+- [Http Client Module](#http-client-module)
 - [Services](#service)
 - [Forms](#angular-forms)
 
@@ -288,3 +286,9 @@
     - Subscribing to the form changes
     - An sensible choice for those who loves to do unit test
 - You can see a good implementation on how to work with `HttpClient` in Angular in [this PR](https://github.com/kasir-barati/my-tour-of-heroes-angular/pull/6/files). Please read the whole codebase, that's how you get a more natural feeling about RxJS.
+
+# Http Client Module
+
+- Add `HttpClientModule` in `AppModule`'s `imports` list
+- RxJS based
+- built-in tool to make http calls from client side

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 import { Media } from '../media.model';
 import { environment } from 'src/environments/environment';
@@ -33,6 +33,7 @@ export class MediaService {
         // TODO: Do required normalization
         return media;
       }),
+      catchError(this.normalizeError),
     );
   }
 
@@ -51,6 +52,7 @@ export class MediaService {
           // TODO: Do required normalization
           return media;
         }),
+        catchError(this.normalizeError),
       );
   }
 
@@ -62,6 +64,7 @@ export class MediaService {
           // TODO: Do required normalization
           return media;
         }),
+        catchError(this.normalizeError),
       );
   }
 
@@ -73,6 +76,13 @@ export class MediaService {
           // TODO: Do required normalization
           return media;
         }),
+        catchError(this.normalizeError),
       );
+  }
+
+  private normalizeError(error: any) {
+    // Normalize error
+    console.error(error);
+    return throwError(() => new Error('E'));
   }
 }

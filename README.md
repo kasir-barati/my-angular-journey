@@ -305,3 +305,16 @@
     - For example `api/medias`
 - Use `environment.ts` for base url:
   - [Read more here](https://github.com/kasir-barati/task-tracker-traversy-media/blob/dev/src/environments/README.md).
+- `HttpClient` service detects data types and set the `content-type` header automatically.
+- It is almost all the time possible to face bug. So we take advantages RxJS operators.
+  - `catchError`
+    - TODO: Write more about it
+    - An operator
+    - It will catch errors that thrown by the observable.
+    - We wanna manage errors in one function.
+      - Please note that I also read The Pragmatic Programmer and knows that they believe with certitude in **Crash Early** and I too. But here we are talking about showing user friendly messages, not technical messages - Event due this should not be the case, AFAIK we in the backend should avoid to disclose any technical message. At last we have the right to show you 500 with Server Error message - that looks gibberish.
+    - I am not 100% sure but I guess if we use promises inside the observables things goes to blow up.
+      - I mean I think we should convert promises into observables to take advantages of this operator to handle errors
+    - We also need to rearise error again. Because in the component we wanna define subscriber for the errors.
+      - Here is where we wanna use `throwError` creation function
+      - TODO: Write more about it

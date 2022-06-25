@@ -339,3 +339,11 @@
 - We can load more module/component as user asks for more
 - Faster load
 - Leveraged by `import` function
+
+# View encapsulation
+
+- Angular accepts:
+  - Native: **Deprecated**, Do nothing
+  - None: Do nothing. Deliver it as-is
+  - Shadow DOM: Browser related. Browser restructure your HTML and CSS. Not supported in all browsers.
+  - Emulated: **Default**, Done by Angular to imitate the shadow DOM.
